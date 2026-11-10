@@ -1,20 +1,12 @@
-import pandas as pd
-from sklearn.datasets import load_iris
 
+import pandas as pd
 
 class DataLoader:
 
     def load_data(self):
-        iris = load_iris()
+        df = pd.read_csv("data/raw/iris.csv")
 
-        X = pd.DataFrame(
-            iris.data,
-            columns=iris.feature_names
-        )
-
-        y = pd.Series(
-            iris.target,
-            name="target"
-        )
+        X = df.drop(columns=["target"])
+        y = df["target"]
 
         return X, y
