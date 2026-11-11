@@ -1,0 +1,6 @@
+[core]
+    remote = storage
+[cache]
+    dir = C:\Users\PalCh004\dvc_temp_cache
+['remote "storage"']
+    url = C:\Users\PalCh004\dvc_storage
