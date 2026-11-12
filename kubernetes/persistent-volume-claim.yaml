@@ -1,0 +1,28 @@
+
+# Definition:
+# A Persistent Volume Claim (PVC) requests storage from
+# Kubernetes without requiring the application to manage
+# the underlying storage details.
+
+# Kubernetes API version
+apiVersion: v1
+
+# Resource type
+kind: PersistentVolumeClaim
+
+metadata:
+  name: iris-ml-pvc
+  namespace: ml-app
+
+spec:
+  # Storage access requirement
+  accessModes:
+    - ReadWriteOnce
+
+  # Must match the StorageClass of our example PV
+  storageClassName: manual
+
+  # Amount of storage requested
+  resources:
+    requests:
+      storage: 1Gi

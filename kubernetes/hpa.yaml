@@ -1,0 +1,37 @@
+
+# Definition:
+# HPA automatically scales the number of Pod replicas
+# based on metrics such as CPU utilization.
+
+# Kubernetes API version for autoscaling
+apiVersion: autoscaling/v2
+
+# Resource type
+kind: HorizontalPodAutoscaler
+
+metadata:
+  name: iris-ml-hpa
+  namespace: ml-app
+
+spec:
+  # Identifies the Deployment that HPA should scale
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: iris-ml-api
+
+  # Minimum number of Pods
+  minReplicas: 2
+
+  # Maximum number of Pods
+  maxReplicas: 5
+
+  # Metrics used to determine scaling
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          # Target average CPU utilization across Pods
+          averageUtilization: 70

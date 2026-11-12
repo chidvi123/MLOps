@@ -1,0 +1,28 @@
+
+# Definition:
+# A Kubernetes Service provides a stable network endpoint
+# to access a group of Pods, even if their IP addresses change.
+#
+# Kubernetes API version for Service resources
+apiVersion: v1
+
+# Resource type
+kind: Service
+
+metadata:
+  name: iris-ml-service  # Service name
+  namespace: ml-app      # Namespace where it belongs
+
+spec:
+  # Selects Pods using their labels
+  selector:
+    app: iris-ml-api
+
+  # Makes this Service accessible within the cluster
+  type: ClusterIP
+
+  # Defines communication ports
+  ports:
+    - protocol: TCP
+      port: 8000        # Service port
+      targetPort: 8000  # FastAPI container port

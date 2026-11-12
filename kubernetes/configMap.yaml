@@ -1,0 +1,21 @@
+
+# Definition:
+# A ConfigMap stores non-sensitive configuration data separately
+# from application code and Docker images.
+
+# Kubernetes API version
+apiVersion: v1
+
+# Resource type
+kind: ConfigMap
+
+metadata:
+  name: iris-ml-config  # ConfigMap name
+  namespace: ml-app     # Namespace where it belongs
+
+# Configuration key-value pairs
+data:
+  APP_NAME: "Iris ML Prediction API"
+  APP_ENV: "production"
+  MODEL_PATH: "artifacts/packaged_model"
+  API_PORT: "8000"

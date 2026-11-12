@@ -1,0 +1,30 @@
+
+# Definition:
+# A Persistent Volume (PV) represents storage available
+# in the Kubernetes cluster, independent of individual Pods.
+
+# Kubernetes API version
+apiVersion: v1
+
+# Resource type
+kind: PersistentVolume
+
+metadata:
+  name: iris-ml-pv
+
+spec:
+  # Total storage capacity
+  capacity:
+    storage: 1Gi
+
+  # Allows one node to mount this volume as read-write
+  accessModes:
+    - ReadWriteOnce
+
+  # Storage type: manually configured local storage
+  storageClassName:  # can use any cloud based storage eg gp3
+
+  # Example local storage directory on a Kubernetes node
+  hostPath:
+    path: "/mnt/data/iris-ml"
+    type: DirectoryOrCreate

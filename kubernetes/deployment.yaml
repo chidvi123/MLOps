@@ -1,0 +1,44 @@
+
+# Kubernetes API version for Deployment resources
+apiVersion: apps/v1
+
+# Tells Kubernetes that we are creating a Deployment
+kind: Deployment
+
+# Basic information about our Deployment
+metadata:
+  name: iris-ml-api
+  namespace: ml-app
+
+# Desired configuration of our Deployment
+spec:
+
+  # Kubernetes should maintain 2 Pods
+  replicas: 2
+
+  # Identifies which Pods this Deployment manages
+  selector:
+    matchLabels:
+      app: iris-ml-api
+
+  # Template used to create each Pod
+  template:
+    metadata:
+
+      # Labels assigned to every Pod
+      labels:
+        app: iris-ml-api
+
+    # Container configuration inside each Pod
+    spec:
+      containers:
+
+        # Our FastAPI application container
+        - name: iris-api
+
+          # Docker image containing our FastAPI code and ML model
+          image: iris-ml-api:v1
+
+          # Port on which FastAPI listens inside the container
+          ports:
+            - containerPort: 8000
