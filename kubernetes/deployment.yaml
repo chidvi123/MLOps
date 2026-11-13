@@ -1,3 +1,4 @@
+# deployment.yaml is an instruction file that tells Kubernetes how to run our application.
 
 # Kubernetes API version for Deployment resources
 apiVersion: apps/v1

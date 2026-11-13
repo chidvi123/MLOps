@@ -1,4 +1,3 @@
-
 # Definition:
 # A ConfigMap stores non-sensitive configuration data separately
 # from application code and Docker images.

@@ -20,5 +20,4 @@ data/processed/
 # Environment variables
 .env
 
-# IDE
 .vscode/
